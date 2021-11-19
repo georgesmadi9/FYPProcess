@@ -1,0 +1,54 @@
+<form class="form-horizontal" role="form">
+
+    <!-- Text input-->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="projectname">Project Title</label>
+        <div class="col-md-4">
+            <input class="form-control input-md" id="projectname" name="projectname" placeholder="" required=""
+                   type="text">
+
+        </div>
+    </div>
+
+    <!-- File Button -->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="ProjectForm">Project Form</label>
+        <div class="col-md-4">
+            <input
+                    cam-max-filesize="10000000"
+                    cam-variable-name="document"
+                    cam-variable-type="File"
+                    class="form-control"
+                    id="ProjectForm"
+                    name="ProjectForm"
+                    type="file"
+            >
+            <div class="help-block">This field is required</div>
+        </div>
+    </div>
+
+    <script cam-script type="text/form-script">
+    var fileUpload = $('#ProjectForm');
+    var fileUploadHelpBlock = $('.help-block', fileUpload.parent());
+
+    function flagFileUpload() {
+      var hasFile = fileUpload.get(0).files.length > 0;
+      fileUpload[hasFile ? 'removeClass' : 'addClass']('ng-invalid');
+      fileUploadHelpBlock[hasFile ? 'removeClass' : 'addClass']('error');
+      return hasFile;
+    }
+
+    fileUpload.on('change', function () {
+      flagFileUpload();
+    });
+
+    camForm.on('submit', function(evt) {
+      var hasFile = flagFileUpload();
+
+      // prevent submit if user has not provided a file
+      evt.submitPrevented = !hasFile;
+    });
+
+    </script>
+
+</form>

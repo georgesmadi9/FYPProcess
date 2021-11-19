@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.11.1">
+  <bpmn:collaboration id="Collaboration_0cwtisf">
+    <bpmn:participant id="Participant_1elgh4h" processRef="FYPProcess" />
+  </bpmn:collaboration>
+  <bpmn:process id="FYPProcess" name="FYPProcess" isExecutable="true">
+    <bpmn:laneSet id="LaneSet_0op6zfr">
+      <bpmn:lane id="Lane_08xurnm">
+        <bpmn:flowNodeRef>StartEvent</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>EndEvent</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>ServiceTask_Logger</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_08uq8wa">
+        <bpmn:flowNodeRef>Activity_1x2teq1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_027ag0n</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_036b14t" />
+    </bpmn:laneSet>
+    <bpmn:startEvent id="StartEvent" name="Process&#10;started">
+      <bpmn:outgoing>SequenceFlow1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="EndEvent" name="Process&#10;ended">
+      <bpmn:incoming>Flow_0ggeah3</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:serviceTask id="ServiceTask_Logger" name="Log on console" camunda:delegateExpression="#{logger}">
+      <bpmn:incoming>SequenceFlow1</bpmn:incoming>
+      <bpmn:outgoing>Flow_0gj0hfr</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="Activity_1x2teq1" name="Upload Project" camunda:formKey="embedded:app:forms/upload-proposal.html">
+      <bpmn:incoming>Flow_0gj0hfr</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_18o7zqy</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="SequenceFlow_18o7zqy" sourceRef="Activity_1x2teq1" targetRef="Activity_027ag0n" />
+    <bpmn:sequenceFlow id="SequenceFlow1" sourceRef="StartEvent" targetRef="ServiceTask_Logger" />
+    <bpmn:sequenceFlow id="Flow_0gj0hfr" sourceRef="ServiceTask_Logger" targetRef="Activity_1x2teq1" />
+    <bpmn:sequenceFlow id="Flow_0ggeah3" sourceRef="Activity_027ag0n" targetRef="EndEvent" />
+    <bpmn:userTask id="Activity_027ag0n" name="Preview Task" camunda:formKey="embedded:app:forms/task-form-pdf-viewer.html">
+      <bpmn:incoming>SequenceFlow_18o7zqy</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ggeah3</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0cwtisf">
+      <bpmndi:BPMNShape id="Participant_1elgh4h_di" bpmnElement="Participant_1elgh4h" isHorizontal="true">
+        <dc:Bounds x="157" y="60" width="600" height="490" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_08xurnm_di" bpmnElement="Lane_08xurnm" isHorizontal="true">
+        <dc:Bounds x="187" y="60" width="570" height="250" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_08uq8wa_di" bpmnElement="Lane_08uq8wa" isHorizontal="true">
+        <dc:Bounds x="187" y="310" width="570" height="120" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_036b14t_di" bpmnElement="Lane_036b14t" isHorizontal="true">
+        <dc:Bounds x="187" y="430" width="570" height="120" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_18o7zqy_di" bpmnElement="SequenceFlow_18o7zqy">
+        <di:waypoint x="311" y="370" />
+        <di:waypoint x="380" y="370" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="496.5" y="99" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_08va5r8_di" bpmnElement="SequenceFlow1">
+        <di:waypoint x="261" y="138" />
+        <di:waypoint x="261" y="200" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="228" y="95" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0gj0hfr_di" bpmnElement="Flow_0gj0hfr">
+        <di:waypoint x="261" y="280" />
+        <di:waypoint x="261" y="330" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ggeah3_di" bpmnElement="Flow_0ggeah3">
+        <di:waypoint x="480" y="370" />
+        <di:waypoint x="570" y="370" />
+        <di:waypoint x="570" y="120" />
+        <di:waypoint x="626" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent">
+        <dc:Bounds x="243" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="241" y="64.5" width="40" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_0fkea3f_di" bpmnElement="EndEvent">
+        <dc:Bounds x="626" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="625" y="138" width="40" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_16vok30_di" bpmnElement="ServiceTask_Logger">
+        <dc:Bounds x="211" y="200" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1n2jbjs_di" bpmnElement="Activity_1x2teq1">
+        <dc:Bounds x="211" y="330" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0jos0d5_di" bpmnElement="Activity_027ag0n">
+        <dc:Bounds x="380" y="330" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
