@@ -1,0 +1,58 @@
+<form role="form">
+
+    <script cam-script type="text/form-script">
+                  camForm.on('form-loaded', function() {
+                    $scope.contextPath = camForm.formUrl.split("/forms/")[0];
+                    $scope.taskId = camForm.taskId;
+                  });
+    </script>
+
+     <div class="container-fluid">
+         <table class="table table-striped">
+             <tr>
+                 <td>Project Code</td>
+                 <td>Supervisor</td>
+                 <td>Number of members per team</td>
+                 <td></td>
+             </tr>
+             <tr>
+                 <td>Project #1</td>
+                 <td>Rima Kilany Chamoun</td>
+                 <td>{{"    "}}2</td>
+                 <td>
+                     <a href="{{contextPath}}/file-variable?taskId={{taskId}}&variableName=document" class="btn btn-primary">Download PDF</a>                 </td>
+             </tr>
+             <tr>
+                 <td>Project #2</td>
+                 <td>Maroun Chamoun</td>
+                 <td>{{"    "}}3</td>
+                 <td>
+                     <a href="{{contextPath}}/file-variable?taskId={{taskId}}&variableName=document" class="btn btn-primary">Download PDF</a>                 </td>
+             </tr>
+             <tr>
+                 <td>Project #3</td>
+                 <td>Hadi Sawaya</td>
+                 <td>{{"    "}}2</td>
+                 <td>
+                     <a href="{{contextPath}}/file-variable?taskId={{taskId}}&variableName=document" class="btn btn-primary">Download PDF</a>                 </td>
+             </tr>
+             <tr>
+                 <td>Project #4</td>
+                 <td>Youssef Bakouny</td>
+                 <td>{{"    "}}2</td>
+                 <td>
+                     <a href="{{contextPath}}/file-variable?taskId={{taskId}}&variableName=document" class="btn btn-primary">Download PDF</a>                 </td>
+             </tr>
+             <tr>
+                 <td>Project #4</td>
+                 <td>Elias Rachid</td>
+                 <td>{{"    "}}4</td>
+                 <td>
+                     <a href="{{contextPath}}/file-variable?taskId={{taskId}}&variableName=document" class="btn btn-primary">Download PDF</a>
+                 </td>
+             </tr>
+         </table>
+
+     </div>
+
+</form>

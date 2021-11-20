@@ -9,30 +9,27 @@ embedded:/forms/task-form-pdf-viewer.html
     <!-- two-column layout -->
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-2">
 
                 <!-- table for listing existing variables -->
                 <script cam-script type="text/form-script">
-    var variableManager = camForm.variableManager;
+                    var variableManager = camForm.variableManager;
 
-    camForm.on('form-loaded', function() {
-      // variables that are not already used in cam-variable bindings
-      // must be fetched explicitly
-      camForm.variableManager.fetchVariable('name');
-      //camForm.variableManager.fetchVariable('');
-    });
+                    camForm.on('form-loaded', function() {
+                      // variables that are not already used in cam-variable bindings
+                      // must be fetched explicitly
+                      camForm.variableManager.fetchVariable('name');
+                      //camForm.variableManager.fetchVariable('');
+                    });
 
-    camForm.on('variables-fetched', function() {
-      // access to all process variables after the form has loaded
-      $scope.variables = variableManager.variables;
-      //debugger;
-    });
-
-
-
+                    camForm.on('variables-fetched', function() {
+                      // access to all process variables after the form has loaded
+                      $scope.variables = variableManager.variables;
+                      //debugger;
+                    });
                 </script>
                 <h3>Document Preview</h3>
-                <h3> </h3>
+                <h3></h3>
                 <!-- file download -->
                 <div class="form-group">
                     <label class="control-label">Document download:</label>
@@ -44,7 +41,7 @@ embedded:/forms/task-form-pdf-viewer.html
 
             </div>
             <!-- 2nd column -->
-            <div class="col-md-8">
+            <div class="col-md-10">
 
                 <!-- PDF viewer -->
                 <object data="{{contextPath}}/file-variable?taskId={{taskId}}&variableName=document"
@@ -55,14 +52,12 @@ embedded:/forms/task-form-pdf-viewer.html
                             download the PDF file.</a>
                     </p>
                 </object>
+
                 <script cam-script type="text/form-script">
-      camForm.on('form-loaded', function() {
-        $scope.contextPath = camForm.formUrl.split("/forms/")[0];
-        $scope.taskId = camForm.taskId;
-      });
-
-
-
+                  camForm.on('form-loaded', function() {
+                    $scope.contextPath = camForm.formUrl.split("/forms/")[0];
+                    $scope.taskId = camForm.taskId;
+                  });
                 </script>
 
                 <!-- end two-column layout -->
