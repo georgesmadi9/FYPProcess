@@ -1,15 +1,44 @@
 <form class="form-horizontal" role="form">
 
     <!-- Text input-->
-    <div class="form-group">
-        <label class="col-md-4 control-label" for="projectname">Project Title</label>
-        <div class="col-md-4">
+    <div class="container-fluid form-group">
+        <label class="col-md-2 control-label" for="projectname">Project Title</label>
+        <div class="col-md-2">
             <input
                 class="form-control input-md"
                 id="projectname"
                 name="projectname"
                 required=""
                 type="text"
+                cam-variable-type="String"
+                cam-variable-name="projectname"
+            >
+        </div>
+        <label class="col-md-2 control-label" for="studentsnbr">Number of Students</label>
+        <div class="col-md-2">
+            <input
+                    class="form-control input-md"
+                    id="studentsnbr"
+                    name="NumberofStudents"
+                    required=""
+                    type="number"
+                    placeholder="2 to 4"
+                    min="2"
+                    max="4"
+                    cam-variable-type="Integer"
+                    cam-variable-name="studentsnbr"
+            >
+        </div>
+        <label class="col-md-2 control-label" for="advisor">Advisor Name</label>
+        <div class="col-md-2">
+            <input
+                    class="form-control input-md"
+                    id="advisor"
+                    name="Advisor"
+                    required=""
+                    type="text"
+                    cam-variable-type="String"
+                    cam-variable-name="advisor"
             >
         </div>
     </div>
@@ -32,27 +61,26 @@
     </div>
 
     <script cam-script type="text/form-script">
-    var fileUpload = $('#ProjectForm');
-    var fileUploadHelpBlock = $('.help-block', fileUpload.parent());
+        var fileUpload = $('#ProjectForm');
+        var fileUploadHelpBlock = $('.help-block', fileUpload.parent());
 
-    function flagFileUpload() {
-      var hasFile = fileUpload.get(0).files.length > 0;
-      fileUpload[hasFile ? 'removeClass' : 'addClass']('ng-invalid');
-      fileUploadHelpBlock[hasFile ? 'removeClass' : 'addClass']('error');
-      return hasFile;
-    }
+        function flagFileUpload() {
+          var hasFile = fileUpload.get(0).files.length > 0;
+          fileUpload[hasFile ? 'removeClass' : 'addClass']('ng-invalid');
+          fileUploadHelpBlock[hasFile ? 'removeClass' : 'addClass']('error');
+          return hasFile;
+        }
 
-    fileUpload.on('change', function () {
-      flagFileUpload();
-    });
+        fileUpload.on('change', function () {
+          flagFileUpload();
+        });
 
-    camForm.on('submit', function(evt) {
-      var hasFile = flagFileUpload();
+        camForm.on('submit', function(evt) {
+          var hasFile = flagFileUpload();
 
-      // prevent submit if user has not provided a file
-      evt.submitPrevented = !hasFile;
-    });
-
+          // prevent submit if user has not provided a file
+          evt.submitPrevented = !hasFile;
+        });
     </script>
 
 </form>

@@ -1,9 +1,16 @@
 spring.datasource:
-  url: jdbc:h2:./camunda-db;DB_CLOSE_DELAY=-1;MVCC=TRUE;DB_CLOSE_ON_EXIT=FALSE
+  url: jdbc:h2:~/src/main/ressources/data/camunda-db;DB_CLOSE_DELAY=-1;MVCC=TRUE;DB_CLOSE_ON_EXIT=FALSE
   #shareable h2 database: jdbc:h2:./camunda-db;DB_CLOSE_DELAY=-1;MVCC=TRUE;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=TRUE
   username: sa
   password: sa
 spring.h2.console.enabled: true
+spring:
+  h2:
+    console:
+      settings:
+        web-allow-others: true
+  datasource:
+    driver-class-name: org.h2.Driver
 camunda.bpm:
   admin-user:
     id: demo

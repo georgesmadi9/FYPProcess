@@ -1,5 +1,18 @@
 <form role="form">
 
+    <script cam-script type="text/form-script">
+      camForm.on('form-loaded', function() {
+        // tell the form SDK to fetch the variable named 'customer'
+        camForm.variableManager.fetchVariable('AVAILABLE_PROJECTS');
+
+      });
+      camForm.on('variables-fetched', function() {
+        // work with the variable (bind it to the current AngularJS $scope)
+        $scope.projects = camForm.variableManager.variableValue('AVAILABLE_PROJECTS');
+        //console.log(camForm.variableManager.variableValue('AVAILABLE_PROJECTS'));
+      });
+    </script>
+
     <div class="row form-group">
         <label class="col-md-4 control-label" for="name1">Member 1</label>
         <div class="col-md-4">
@@ -31,12 +44,14 @@
     <div class="row form-group">
         <label class="col-md-4 control-label" for="choice1">Project Choice 1</label>
         <div class="col-md-4">
-            <select id="choice1" name="choice1" class="form-control">
-                <option value="1">Project 1</option>
-                <option value="2">Project 2</option>
-                <option value="3">Project 3</option>
-                <option value="4">Project 4</option>
-                <option value="5">Project 5</option>
+            <select
+                    id="choice1"
+                    name="choice1"
+                    class="form-control"
+                    cam-variable-name="studentchoice1"
+                    cam-variable-type="String"
+            >
+                <option ng-repeat="prj in projects" value="{{prj}}">{{prj}}</option>
             </select>
         </div>
     </div>
@@ -44,12 +59,11 @@
     <div class="row form-group">
         <label class="col-md-4 control-label" for="choice2">Project Choice 2</label>
         <div class="col-md-4">
-            <select id="choice2" name="choice2" class="form-control">
-                <option value="1">Project 1</option>
-                <option value="2">Project 2</option>
-                <option value="3">Project 3</option>
-                <option value="4">Project 4</option>
-                <option value="5">Project 5</option>
+            <select id="choice2" name="choice2" class="form-control"
+                    cam-variable-name="studentchoice2"
+                    cam-variable-type="String"
+            >
+                <option ng-repeat="prj in projects" value="{{prj}}">{{prj}}</option>
             </select>
         </div>
     </div>
