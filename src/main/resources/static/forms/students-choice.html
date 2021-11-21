@@ -8,8 +8,18 @@
       });
       camForm.on('variables-fetched', function() {
         // work with the variable (bind it to the current AngularJS $scope)
-        $scope.projects = camForm.variableManager.variableValue('AVAILABLE_PROJECTS');
-        //console.log(camForm.variableManager.variableValue('AVAILABLE_PROJECTS'));
+        var projSTR = camForm.variableManager.variableValue('AVAILABLE_PROJECTS');
+        // transform the strings array into JSON
+        var i = 0;
+        var l = projSTR.length;
+        var projs = [];
+        while (i < l) {
+            var jsonobj = JSON.parse(projSTR[i]);
+            projs.push(jsonobj);
+            i++;
+        }
+        console.log(projs);
+        $scope.projects = [...projs];
       });
     </script>
 
@@ -51,7 +61,7 @@
                     cam-variable-name="studentchoice1"
                     cam-variable-type="String"
             >
-                <option ng-repeat="prj in projects" value="{{prj}}">{{prj}}</option>
+                <option ng-repeat="prj in projects" value="{{prj.projectname}}">{{prj.projectname}}</option>
             </select>
         </div>
     </div>
@@ -63,7 +73,7 @@
                     cam-variable-name="studentchoice2"
                     cam-variable-type="String"
             >
-                <option ng-repeat="prj in projects" value="{{prj}}">{{prj}}</option>
+                <option ng-repeat="prj in projects" value="{{prj.projectname}}">{{prj.projectname}}</option>
             </select>
         </div>
     </div>

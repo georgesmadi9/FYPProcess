@@ -14,10 +14,6 @@ public class ProjectEntity {
         this.filepath = filepath;
     }
 
-    public ProjectEntity(String projectname) {
-        this.projectname = projectname;
-    }
-
     public String getProjectname() {
         return projectname;
     }

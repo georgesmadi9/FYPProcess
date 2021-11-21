@@ -12,16 +12,16 @@ public class DatabaseWriter implements JavaDelegate {
 
     DatabaseConnector dbc = new DatabaseConnector();
 
-    private void writer(String projectname, int studentsnbr, String advisor, String File) throws SQLException {
+    private void writer(String projectname, int studentsnbr, String advisor) throws SQLException {
         Connection conn = dbc.createConnection();
 
-        String query = "insert into PROJECTS (name, grpnbr, encadrant, docpath)" + " values ( ?, ?, ?, ? )";
+        String query = "insert into PROJECTS (name, grpnbr, encadrant)" + " values ( ?, ?, ? )";
 
         PreparedStatement insertst = conn.prepareStatement(query);
         insertst.setString(1, projectname);
         insertst.setInt(2, studentsnbr);
         insertst.setString(3, advisor);
-        insertst.setString(4, File);
+        //insertst.setString(4, document);
 
         insertst.execute();
 
@@ -33,7 +33,7 @@ public class DatabaseWriter implements JavaDelegate {
         String projectname = (String) delegateExecution.getVariable("projectname");
         int studentsnbr = (int) delegateExecution.getVariable("studentsnbr");
         String advisor = (String) delegateExecution.getVariable("advisor");
-        String File = (String) delegateExecution.getVariable("File");
-        writer(projectname, studentsnbr, advisor, File);
+        //String document = (String) delegateExecution.getVariable("document");
+        writer(projectname, studentsnbr, advisor);
     }
 }
