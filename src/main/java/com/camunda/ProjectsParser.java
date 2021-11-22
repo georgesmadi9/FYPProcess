@@ -34,7 +34,7 @@ public class ProjectsParser implements JavaDelegate {
 
             ProjectEntity project = new ProjectEntity(projectname, studentsnumber, supervisor, filepath); /*, studentsnumber, supervisor, filepath*/
             String jsonProject = new Gson().toJson(project);
-            System.out.println(jsonProject);
+            //System.out.println(jsonProject);
             projectslist.add(jsonProject);
         }
 

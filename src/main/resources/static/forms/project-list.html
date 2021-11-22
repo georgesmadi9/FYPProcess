@@ -6,10 +6,9 @@
             $scope.taskId = camForm.taskId;
         });
         camForm.on('form-loaded', function() {
-        // tell the form SDK to fetch the variable named 'customer'
-        camForm.variableManager.fetchVariable('AVAILABLE_PROJECTS');
-
-      });
+            // tell the form SDK to fetch the variable named 'customer'
+            camForm.variableManager.fetchVariable('AVAILABLE_PROJECTS');
+        });
       camForm.on('variables-fetched', function() {
         // work with the variable (bind it to the current AngularJS $scope)
         var projSTR = camForm.variableManager.variableValue('AVAILABLE_PROJECTS');
@@ -39,7 +38,10 @@
                  <td>{{proj.advisor}}</td>
                  <td>{{proj.studentsnumber}}</td>
                  <td>
-                     <a href="{{contextPath}}/file-variable?taskId={{taskId}}&variableName=document" class="btn btn-primary">Download PDF</a>                 </td>
+                     <a href="{{contextPath}}/file-variable?taskId={{taskId}}&variableName=document"
+                        class="btn btn-primary"
+                        target="_blank">Download PDF</a>
+                 </td>
              </tr>
          </table>
 

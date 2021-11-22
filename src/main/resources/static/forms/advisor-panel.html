@@ -1,0 +1,49 @@
+<form role="form" id="advisorpanel" name="advisorpanel">
+
+    <script cam-script type="text/form-script">
+
+        camForm.on('form-loaded', function() {
+            // tell the form SDK to fetch the variable named 'customer'
+            camForm.variableManager.fetchVariable('AVAILABLE_PROJECTS');
+        });
+
+        camForm.on('variables-fetched', function() {
+            // work with the variable (bind it to the current AngularJS $scope)
+            var projSTR = camForm.variableManager.variableValue('AVAILABLE_PROJECTS');
+            // transform the strings array into JSON
+            var i = 0;
+            var l = projSTR.length;
+            var projs = [];
+            while (i < l) {
+                var jsonobj = JSON.parse(projSTR[i]);
+                projs.push(jsonobj);
+                i++;
+            }
+            //console.log(projs);
+            $scope.projects = [...projs];
+        });
+
+    </script>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Project Title</th>
+            <th>Nb of Students</th>
+            <th>Applications</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="prj in projects">
+            <td>{{prj.projectname}}</td>
+            <td>{{prj.studentsnumber}}</td>
+            <td>
+                <select>
+                    <option></option>
+                </select>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</form>
