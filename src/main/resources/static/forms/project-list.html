@@ -1,6 +1,9 @@
+<!-- Form to view all the projects available -->
+
 <form role="form">
 
     <script cam-script type="text/form-script">
+        // script to load variables and the make a few operations to read them correctly
         camForm.on('form-loaded', function() {
             $scope.contextPath = camForm.formUrl.split("/forms/")[0];
             $scope.taskId = camForm.taskId;
@@ -23,28 +26,34 @@
         }
         $scope.projects = [...projs];
       });
+
+
     </script>
 
-     <div class="container-fluid">
-         <table class="table table-striped">
-             <tr>
-                 <td>Project Name</td>
-                 <td>Supervisor</td>
-                 <td>Number of members per team</td>
-                 <td></td>
-             </tr>
-             <tr ng-repeat="proj in projects">
-                 <td>{{proj.projectname}}</td>
-                 <td>{{proj.advisor}}</td>
-                 <td>{{proj.studentsnumber}}</td>
-                 <td>
-                     <a href="{{contextPath}}/file-variable?taskId={{taskId}}&variableName=document"
-                        class="btn btn-primary"
-                        target="_blank">Download PDF</a>
-                 </td>
-             </tr>
-         </table>
+    <div class="container-fluid">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <td>Project Name</td>
+                <td>Supervisor</td>
+                <td>Number of members per team</td>
+                <td></td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="proj in projects">
+                <td>{{proj.projectname}}</td>
+                <td>{{proj.advisor}}</td>
+                <td>{{proj.studentsnumber}}</td>
+                <td>
+                    <a class="btn btn-primary"
+                       href="{{contextPath}}/file-variable?taskId={{taskId}}&variableName=document"
+                       target="_blank">Download PDF</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
 
-     </div>
+    </div>
 
 </form>

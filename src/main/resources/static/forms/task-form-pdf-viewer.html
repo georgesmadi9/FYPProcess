@@ -1,36 +1,32 @@
-<!--
-You can use this form through Camunda Tasklist
-by setting the formKey of a BPMN User Task to:
-embedded:/forms/task-form-pdf-viewer.html
--->
+<!-- Form to preview the uploaded file -->
 
 <form role="form">
+
+    <script cam-script type="text/form-script">
+        // script to load variables
+        var variableManager = camForm.variableManager;
+
+        camForm.on('form-loaded', function() {
+            // variables that are not already used in cam-variable bindings
+            // must be fetched explicitly
+            camForm.variableManager.fetchVariable('name');
+            //camForm.variableManager.fetchVariable('');
+        });
+
+        camForm.on('variables-fetched', function() {
+            // access to all process variables after the form has loaded
+            $scope.variables = variableManager.variables;
+            //debugger;
+        });
+    </script>
 
     <!-- two-column layout -->
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-2">
-
-                <!-- table for listing existing variables -->
-                <script cam-script type="text/form-script">
-                    var variableManager = camForm.variableManager;
-
-                    camForm.on('form-loaded', function() {
-                      // variables that are not already used in cam-variable bindings
-                      // must be fetched explicitly
-                      camForm.variableManager.fetchVariable('name');
-                      //camForm.variableManager.fetchVariable('');
-                    });
-
-                    camForm.on('variables-fetched', function() {
-                      // access to all process variables after the form has loaded
-                      $scope.variables = variableManager.variables;
-                      //debugger;
-                    });
-                </script>
                 <h3>Document Preview</h3>
                 <h3></h3>
-                <!-- file download -->
+
                 <div class="form-group">
                     <div class="controls">
                         <a cam-file-download="document" class="btn btn-primary" target="_blank">Download PDF</a>
@@ -53,10 +49,10 @@ embedded:/forms/task-form-pdf-viewer.html
                 </object>
 
                 <script cam-script type="text/form-script">
-                  camForm.on('form-loaded', function() {
-                    $scope.contextPath = camForm.formUrl.split("/forms/")[0];
-                    $scope.taskId = camForm.taskId;
-                  });
+                    camForm.on('form-loaded', function() {
+                        $scope.contextPath = camForm.formUrl.split("/forms/")[0];
+                        $scope.taskId = camForm.taskId;
+                    });
                 </script>
 
                 <!-- end two-column layout -->

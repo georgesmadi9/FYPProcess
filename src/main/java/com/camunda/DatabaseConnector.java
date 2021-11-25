@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+// Class to create a connection to the database and able to close it
+// Made mostly for the purpose of removing code duplication since
+// we're making a lot of queries to the database
 public class DatabaseConnector {
 
     Connection createConnection() throws SQLException {
@@ -14,7 +17,7 @@ public class DatabaseConnector {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        Connection conn = DriverManager.getConnection( Url , "sa", "sa");
+        Connection conn = DriverManager.getConnection(Url, "sa", "sa");
         return conn;
     }
 

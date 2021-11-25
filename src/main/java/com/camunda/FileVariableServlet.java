@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.Logger;
 
-
+// File web servlet to be able to upload and access files
 @WebServlet(value = "/file-variable", loadOnStartup = 1)
 public class FileVariableServlet extends HttpServlet {
 

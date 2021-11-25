@@ -1,46 +1,36 @@
-<form role="form" id="advisorpanel" name="advisorpanel">
+<!-- Form made for the advisor to choose the team for each project -->
+
+<form id="advisorpanel" name="advisorpanel" role="form">
 
     <script cam-script type="text/form-script">
-
+        // load variables
         camForm.on('form-loaded', function() {
             // tell the form SDK to fetch the variable named 'customer'
-            camForm.variableManager.fetchVariable('AVAILABLE_PROJECTS');
+            camForm.variableManager.fetchVariable('ADVISOR_PROJECTS');
         });
 
         camForm.on('variables-fetched', function() {
             // work with the variable (bind it to the current AngularJS $scope)
-            var projSTR = camForm.variableManager.variableValue('AVAILABLE_PROJECTS');
-            // transform the strings array into JSON
-            var i = 0;
-            var l = projSTR.length;
-            var projs = [];
-            while (i < l) {
-                var jsonobj = JSON.parse(projSTR[i]);
-                projs.push(jsonobj);
-                i++;
-            }
-            //console.log(projs);
-            $scope.projects = [...projs];
+            $scope.projects_students = camForm.variableManager.variableValue('ADVISOR_PROJECTS');
         });
-
     </script>
 
     <table class="table table-striped">
         <thead>
         <tr>
             <th>Project Title</th>
-            <th>Nb of Students</th>
             <th>Applications</th>
         </tr>
         </thead>
-        <tbody>
-        <tr ng-repeat="prj in projects">
-            <td>{{prj.projectname}}</td>
-            <td>{{prj.studentsnumber}}</td>
+        <tbody ng-repeat="(key, value) in projects_students">
+        <tr>
+            <td>{{key}}</td>
             <td>
-                <select>
-                    <option></option>
-                </select>
+                <div class="form-group">
+                    <select class="select">
+                        <option ng-repeat="v in value">{{v.toString().replace("[\"", "").replace("\"]", "")}}</option>
+                    </select>
+                </div>
             </td>
         </tr>
         </tbody>

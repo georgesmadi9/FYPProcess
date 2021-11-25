@@ -1,57 +1,61 @@
+<!-- Upload form for a project -->
+
 <form class="form-horizontal" role="form">
 
-    <!-- Text input-->
-    <div class="container-fluid form-group">
-        <label class="col-md-2 control-label" for="projectname">Project Title</label>
-        <div class="col-md-2">
+    <div class="container-fluid row form-group">
+        <label class="col-md-4 control-label" for="projectname">Project Title</label>
+        <div class="col-md-4">
             <input
+                    cam-variable-name="projectname"
+                    cam-variable-type="String"
                     class="form-control input-md"
                     id="projectname"
                     name="projectname"
                     required=""
                     type="text"
+            >
+        </div>
+    </div>
+    <div class="container-fluid row form-group">
+        <label class="col-md-4 control-label" for="advisor">Advisor Name</label>
+        <div class="col-md-4">
+            <input
+                    cam-variable-name="advisor"
                     cam-variable-type="String"
-                    cam-variable-name="projectname"
-            >
-        </div>
-        <label class="col-md-2 control-label" for="studentsnbr">Number of Students</label>
-        <div class="col-md-2">
-            <input
-                    class="form-control input-md"
-                    id="studentsnbr"
-                    name="NumberofStudents"
-                    required=""
-                    type="number"
-                    placeholder="2 to 4"
-                    min="2"
-                    max="4"
-                    cam-variable-type="Integer"
-                    cam-variable-name="studentsnbr"
-            >
-        </div>
-        <label class="col-md-2 control-label" for="advisor">Advisor Name</label>
-        <div class="col-md-2">
-            <input
                     class="form-control input-md"
                     id="advisor"
                     name="Advisor"
                     required=""
                     type="text"
-                    cam-variable-type="String"
-                    cam-variable-name="advisor"
+            >
+        </div>
+    </div>
+    <div class="container-fluid row form-group">
+        <label class="col-md-4 control-label" for="studentsnbr">Number of Students</label>
+        <div class="col-md-4">
+            <input
+                    cam-variable-name="studentsnbr"
+                    cam-variable-type="Integer"
+                    class="form-control input-md"
+                    id="studentsnbr"
+                    max="4"
+                    min="2"
+                    name="NumberofStudents"
+                    placeholder="2 to 4"
+                    required=""
+                    type="number"
             >
         </div>
     </div>
 
-    <!-- File Button -->
-    <div class="form-group">
+    <div class="form-group container-fluid row">
         <label class="col-md-4 control-label" for="ProjectForm">Project Form</label>
         <div class="col-md-4">
             <input
                     cam-max-filesize="10000000"
                     cam-variable-name="document"
                     cam-variable-type="File"
-                    class="form-control"
+                    class="form-control btn"
                     id="ProjectForm"
                     name="ProjectForm"
                     type="file"
@@ -61,6 +65,7 @@
     </div>
 
     <script cam-script type="text/form-script">
+        // script to upload the file on the File servlet
         var fileUpload = $('#ProjectForm');
         var fileUploadHelpBlock = $('.help-block', fileUpload.parent());
 
@@ -81,6 +86,7 @@
           // prevent submit if user has not provided a file
           evt.submitPrevented = !hasFile;
         });
+
     </script>
 
 </form>

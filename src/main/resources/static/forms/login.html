@@ -1,4 +1,4 @@
-<form role="form" id="login" name="login">
+<form id="login" name="login" role="form">
 
     <div class="container-fluid">
         <div class="row col-md-8">
@@ -8,20 +8,19 @@
         </div>
 
         <div class="row form-group col-md-8">
-            <label class="col-md-2 control-label" for="ID">ID</label>
+            <label class="col-md-4 control-label" for="ID">ID</label>
             <div class="col-md-4">
-                <input id="ID" name="ID"
-                       type="text" cam-variable-type="String"
-                       cam-variable-name="AdvisorID"
-                       placeholder="Kindly type your Name" class="form-control input-md">
+                <input cam-variable-name="AdvisorID" cam-variable-type="String"
+                       class="form-control input-md" id="ID"
+                       name="ID" placeholder="Kindly type your Name" type="text">
             </div>
         </div>
 
         <div class="row form-group col-md-8">
-            <label class="col-md-2 control-label" for="password">Password</label>
+            <label class="col-md-4 control-label" for="password">Password</label>
             <div class="col-md-4">
-                <input id="password" name="password" type="password" placeholder="Kindly type your password"
-                       class="form-control input-md">
+                <input class="form-control input-md" id="password" name="password"
+                       placeholder="Kindly type your password" type="password">
             </div>
         </div>
     </div>

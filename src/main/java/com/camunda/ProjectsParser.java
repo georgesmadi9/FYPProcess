@@ -12,7 +12,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-
+// This class gets the information about the projects and parses them into JSON format (from a special entity to JSON)
 public class ProjectsParser implements JavaDelegate {
 
     DatabaseConnector dbc = new DatabaseConnector();
@@ -20,21 +20,26 @@ public class ProjectsParser implements JavaDelegate {
     public List<String> getElements() throws SQLException {
         Connection conn = dbc.createConnection();
 
+        // Query to database to get everything from PROJECTS
         String query = "SELECT * FROM PROJECTS";
         Statement st = conn.createStatement();
         ResultSet res = st.executeQuery(query);
 
+        // Array to store the data transformed later
         List<String> projectslist = new ArrayList<String>();
 
+        // loop on the result set to get the data into variables
         while (res.next()) {
+            int projectid = res.getInt(1);
             String projectname = res.getString(2);
             int studentsnumber = res.getInt(3);
             String supervisor = res.getString(4);
-            String filepath = res.getString(5);
 
-            ProjectEntity project = new ProjectEntity(projectname, studentsnumber, supervisor, filepath); /*, studentsnumber, supervisor, filepath*/
+            // transforms the data collected into a Project Entity (customarily created)
+            ProjectEntity project = new ProjectEntity(projectid, projectname, studentsnumber, supervisor);
+            // parses the entity into JSON format using the GSON library/addon
             String jsonProject = new Gson().toJson(project);
-            //System.out.println(jsonProject);
+
             projectslist.add(jsonProject);
         }
 
@@ -44,8 +49,9 @@ public class ProjectsParser implements JavaDelegate {
 
     @Override
     public void execute(DelegateExecution delegateExecution) throws Exception {
+        // gets the data
         List<String> prjl = getElements();
-
+        // defines the variable into the camunda scope
         delegateExecution.setVariable("AVAILABLE_PROJECTS", Spin.JSON(prjl));
     }
 
