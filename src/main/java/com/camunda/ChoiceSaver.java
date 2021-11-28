@@ -7,16 +7,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/************************************************************
- * This script gets the choices that the student group made
- * and save their choices in the GROUPS database
- *
- * /!\ The way this operation was handled is somewhat
- * inefficient, but it's best to keep it this way
- * for simplicity's sake /!\
- ************************************************************/
 
-
+ // This script gets the choices that the student group made
+ // and save their choices in the GROUPS database
 public class ChoiceSaver implements JavaDelegate {
 
     private String getOnly(List<String> names, int nbr) {

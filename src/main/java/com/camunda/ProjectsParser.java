@@ -15,9 +15,8 @@ import java.util.List;
 // This class gets the information about the projects and parses them into JSON format (from a special entity to JSON)
 public class ProjectsParser implements JavaDelegate {
 
-    DatabaseConnector dbc = new DatabaseConnector();
-
     public List<String> getElements() throws SQLException {
+        DatabaseConnector dbc = new DatabaseConnector();
         Connection conn = dbc.createConnection();
 
         // Query to database to get everything from PROJECTS
@@ -26,7 +25,7 @@ public class ProjectsParser implements JavaDelegate {
         ResultSet res = st.executeQuery(query);
 
         // Array to store the data transformed later
-        List<String> projectslist = new ArrayList<String>();
+        List<String> projectslist = new ArrayList<>();
 
         // loop on the result set to get the data into variables
         while (res.next()) {

@@ -15,6 +15,13 @@
         });
     </script>
 
+    <div class="container-fluid row col-md-10">
+        <h3 class="h3">Projects List</h3>
+        <p>Below is the list of all available projects, with their names, number of students and the advisor for the project.</p>
+    </div>
+
+    <br>
+
     <table class="table table-striped">
         <thead>
         <tr>
@@ -27,13 +34,22 @@
             <td>{{key}}</td>
             <td>
                 <div class="form-group">
-                    <select class="select">
-                        <option ng-repeat="v in value">{{v.toString().replace("[\"", "").replace("\"]", "")}}</option>
+                    <select class="select" required="1">
+                        <option value="" selected disabled hidden>--- Select an Option ---</option>
+                        <option ng-repeat="v in value" value="{{v}}">{{v.toString().replace("[\"", "").replace("\"]", "")}}</option>
                     </select>
                 </div>
             </td>
         </tr>
         </tbody>
     </table>
+
+    <div class="container-fluid row">
+        <div class="col-md-5"></div>
+        <div class="container-fluid col-md-4 form-actions">
+            <button type="submit" class="btn btn-primary col-md-5"
+                    ng-click="complete()" ng-disabled="disableCompleteButton()">Submit</button>
+        </div>
+    </div>
 
 </form>

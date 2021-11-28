@@ -1,27 +1,35 @@
 <form id="login" name="login" role="form">
-
     <div class="container-fluid">
-        <div class="row col-md-8">
-            <h3>Welcome to the advisor platform</h3>
-            <h4>Please login using your creditentials</h4>
+        <div class="row col-md-6 col-md-offset-3">
+            <h3 class="h3 text-center">Welcome to the advisor platform</h3>
+            <h4 class="h4 text-center">Please login using your creditentials</h4>
             <br/>
         </div>
 
-        <div class="row form-group col-md-8">
-            <label class="col-md-4 control-label" for="ID">ID</label>
-            <div class="col-md-4">
+        <div class="row form-group col-md-offset-1 col-md-7">
+            <label class="col-md-6 control-label text-right" for="ID">ID</label>
+            <div class="col-md-6">
                 <input cam-variable-name="AdvisorID" cam-variable-type="String"
-                       class="form-control input-md" id="ID"
+                       class="form-control input-md" id="ID" required="1"
                        name="ID" placeholder="Kindly type your Name" type="text">
             </div>
         </div>
 
-        <div class="row form-group col-md-8">
-            <label class="col-md-4 control-label" for="password">Password</label>
-            <div class="col-md-4">
-                <input class="form-control input-md" id="password" name="password"
+        <div class="row form-group col-md-offset-1 col-md-7">
+            <label class="col-md-6 control-label text-right" for="password">Password</label>
+            <div class="col-md-6">
+                <input class="form-control input-md" id="password" name="password" required="1"
                        placeholder="Kindly type your password" type="password">
             </div>
         </div>
     </div>
+
+    <div class="container-fluid row">
+        <div class="col-md-5"></div>
+        <div class="container-fluid col-md-4 form-actions">
+            <button type="submit" class="btn btn-primary col-md-5"
+                    ng-click="complete()" ng-disabled="disableCompleteButton()">Log In</button>
+        </div>
+    </div>
+
 </form>

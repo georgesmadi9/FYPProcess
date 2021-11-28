@@ -26,10 +26,19 @@
         }
         $scope.projects = [...projs];
       });
-
-
     </script>
-
+    <div class="container-fluid row">
+        <div class="container-fluid row col-md-10">
+            <h3 class="h3">Projects List</h3>
+            <p>Below is the list of all available projects, with their names, number of students and the advisor for the project.</p>
+        </div>
+        <div class="container-fluid row col-md-2 form-actions">
+            <br>
+            <button type="submit" class="btn btn-primary"
+                    ng-click="complete()" ng-disabled="disableCompleteButton()">Close</button>
+        </div>
+    </div>
+    <br>
     <div class="container-fluid">
         <table class="table table-striped">
             <thead>
@@ -44,11 +53,11 @@
             <tr ng-repeat="proj in projects">
                 <td>{{proj.projectname}}</td>
                 <td>{{proj.advisor}}</td>
-                <td>{{proj.studentsnumber}}</td>
+                <td class="text-center">{{proj.studentsnumber}}</td>
                 <td>
                     <a class="btn btn-primary"
                        href="{{contextPath}}/file-variable?taskId={{taskId}}&variableName=document"
-                       target="_blank">Download PDF</a>
+                       target="_blank"><i class="glyphicon glyphicon-download"></i> Download PDF</a>
                 </td>
             </tr>
             </tbody>

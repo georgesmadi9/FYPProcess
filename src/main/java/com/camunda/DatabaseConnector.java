@@ -11,7 +11,7 @@ public class DatabaseConnector {
 
     Connection createConnection() throws SQLException {
         String myDriver = "org.h2.Driver";
-        String Url = "jdbc:h2:file:~/src/main/resources/data/camunda-db";
+        String Url = "jdbc:h2:~/src/camunda-db;MV_STORE=false";
         try {
             Class.forName(myDriver);
         } catch (ClassNotFoundException e) {

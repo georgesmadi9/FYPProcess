@@ -27,12 +27,15 @@
                 <h3>Document Preview</h3>
                 <h3></h3>
 
-                <div class="form-group">
+                <div class="form-group row">
                     <div class="controls">
-                        <a cam-file-download="document" class="btn btn-primary" target="_blank">Download PDF</a>
+                        <a cam-file-download="document" class="btn btn-primary" target="_blank">
+                            <i class="glyphicon glyphicon-download"></i> Download PDF</a>
                     </div>
                 </div>
-
+                <div class="row container-fluid">
+                    <button type="submit" class="btn btn-primary btn-lg" ng-click="complete()">Next <i class="glyphicon glyphicon-arrow-right"></i></button>
+                </div>
 
             </div>
             <!-- 2nd column -->

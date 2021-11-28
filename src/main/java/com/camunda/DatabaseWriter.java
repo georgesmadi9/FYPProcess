@@ -18,7 +18,7 @@ public class DatabaseWriter implements JavaDelegate {
         String query = "insert into PROJECTS (PROJECTNAME, STUDENTSNBR, ADVISOR)" + " values ( ?, ?, ? )";
 
         PreparedStatement insertst = conn.prepareStatement(query);
-        // Setting variables correctly (the 3 ?)
+        // Setting variables correctly
         insertst.setString(1, projectname);
         insertst.setInt(2, studentsnbr);
         insertst.setString(3, advisor);
